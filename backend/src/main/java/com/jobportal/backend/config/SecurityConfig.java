@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -54,7 +55,10 @@ public class SecurityConfig {
                         // Recruiter endpoints
                         .requestMatchers("/api/recruiter/**").hasRole("RECRUITER")
                         // Authenticated endpoints
-                        .requestMatchers("/api/jobs").hasAnyRole("JOB_SEEKER", "RECRUITER")
+                        .requestMatchers(HttpMethod.GET, "/api/jobs").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/jobs").hasRole("RECRUITER")
+                        .requestMatchers(HttpMethod.PUT, "/api/jobs/**").hasRole("RECRUITER")
+                        .requestMatchers(HttpMethod.DELETE, "/api/jobs/**").hasRole("RECRUITER")
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -63,18 +67,32 @@ public class SecurityConfig {
                 .build();
     }
  
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of(allowedOrigins.split(",")));
-        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept"));
-        config.setAllowCredentials(true);
- 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);
-        return source;
-    }
+   @Bean
+public CorsConfigurationSource corsConfigurationSource() {
+
+    CorsConfiguration configuration = new CorsConfiguration();
+
+    configuration.setAllowedOrigins(
+            Arrays.asList("http://localhost:5173")
+    );
+
+    configuration.setAllowedMethods(
+            Arrays.asList("GET","POST","PUT","DELETE","OPTIONS")
+    );
+
+    configuration.setAllowedHeaders(
+            Arrays.asList("*")
+    );
+
+    configuration.setAllowCredentials(true);
+
+    UrlBasedCorsConfigurationSource source =
+            new UrlBasedCorsConfigurationSource();
+
+    source.registerCorsConfiguration("/**", configuration);
+
+    return source;
+}
  
   @Bean
 public DaoAuthenticationProvider authenticationProvider() {
