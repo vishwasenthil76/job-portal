@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./Navbar.css";
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const { user, logout, isRecruiter } = useAuth();
@@ -11,60 +11,124 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    navigate('/');
+    navigate("/");
   };
 
-  const isActive = (path) => location.pathname.startsWith(path) ? 'nav-link active' : 'nav-link';
+  const isActive = (path) =>
+    location.pathname === path
+      ? "nav-link active"
+      : "nav-link";
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-brand">
-          <span className="brand-icon">💼</span>
-          JobPortal
-        </Link>
 
-        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        {/* Logo */}
+        <Link to="/" className="navbar-brand">
+  <span className="brand-icon">💼</span>
+  <span className="brand-text">JobConnect</span>
+</Link>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
           ☰
         </button>
 
-        <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+        {/* Navigation */}
+        <div className={`nav-menu ${menuOpen ? "open" : ""}`}>
 
+          {/* Recruiter Links */}
           {user && isRecruiter() && (
             <>
-              <Link to="/recruiter/dashboard" className={isActive('/recruiter/dashboard')}>Dashboard</Link>
-              <Link to="/recruiter/post-job" className={isActive('/recruiter/post-job')}>Post Job</Link>
-              <Link to="/recruiter/manage-jobs" className={isActive('/recruiter/manage-jobs')}>Manage Jobs</Link>
+              <Link
+                to="/recruiter/dashboard"
+                className={isActive("/recruiter/dashboard")}
+              >
+                Dashboard
+              </Link>
+
+              <Link
+                to="/recruiter/post-job"
+                className={isActive("/recruiter/post-job")}
+              >
+                Post Job
+              </Link>
+
+              <Link
+                to="/recruiter/manage-jobs"
+                className={isActive("/recruiter/manage-jobs")}
+              >
+                Manage Jobs
+              </Link>
             </>
           )}
 
+          {/* Job Seeker Links */}
           {user && !isRecruiter() && (
             <>
-              <Link to="/">Browse Jobs</Link>
+              <Link to="/" className={isActive("/")}>
+                Browse Jobs
+              </Link>
 
-<Link to="/dashboard">Dashboard</Link>
+              <Link
+                to="/dashboard"
+                className={isActive("/dashboard")}
+              >
+                Dashboard
+              </Link>
 
-<Link to="/applications">My Applications</Link>
-
-<Link to="/recruiter">Dashboard</Link>
+              <Link
+                to="/applications"
+                className={isActive("/applications")}
+              >
+                Applications
+              </Link>
             </>
           )}
-
-          <div className="nav-auth">
-            {user ? (
-              <div className="user-menu">
-                <span className="user-name">👤 {user.name}</span>
-                <span className="user-role">{user.role === 'RECRUITER' ? 'Recruiter' : 'Job Seeker'}</span>
-                <button onClick={handleLogout} className="btn-logout">Logout</button>
-              </div>
-            ) : (
-              <>
-                <Link to="/login" className="btn-outline">Login</Link>
-                <Link to="/register" className="btn-primary">Register</Link>
-              </>
-            )}
-          </div>
         </div>
+
+        {/* Right Section */}
+        <div className="nav-auth">
+          {user ? (
+            <>
+              <div className="user-info">
+                <div className="avatar">
+                  {user.name.charAt(0).toUpperCase()}
+                </div>
+
+                <div>
+                  <p className="user-name">{user.name}</p>
+                  <p className="user-role">
+                    {user.role === "RECRUITER"
+                      ? "Recruiter"
+                      : "Job Seeker"}
+                  </p>
+                </div>
+              </div>
+
+              <button
+                onClick={handleLogout}
+                className="logout-btn"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="login-btn">
+                Login
+              </Link>
+
+              <Link to="/register" className="register-btn">
+                Register
+              </Link>
+            </>
+          )}
+        </div>
+
       </div>
     </nav>
   );

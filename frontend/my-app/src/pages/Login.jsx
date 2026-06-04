@@ -41,24 +41,28 @@ const Login = () => {
 
       {/* Left Side */}
       <div className="login-left">
-        <h1>Find Your Dream Job</h1>
-        <p>
-          Connect with top companies, discover exciting opportunities,
-          and take the next step in your career journey.
-        </p>
+        <h1>Create Your Career Journey</h1>
 
+<p>
+  Discover thousands of opportunities from leading companies
+  and build a career that matches your ambitions.
+</p>
         <div className="features">
           <div className="feature">
-            🚀 Thousands of Jobs
-          </div>
+  ✓ Build your professional profile
+</div>
 
-          <div className="feature">
-            🏢 Top Companies
-          </div>
+<div className="feature">
+  ✓ Get discovered by recruiters
+</div>
 
-          <div className="feature">
-            💼 Easy Applications
-          </div>
+<div className="feature">
+  ✓ Apply to jobs with one click
+</div>
+
+<div className="feature">
+  ✓ Track applications in real time
+</div>
         </div>
       </div>
 

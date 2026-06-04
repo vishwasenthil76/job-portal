@@ -1,44 +1,241 @@
+/* Google Font */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
 .navbar {
-  background: #0f172a;
-  color: white;
-  padding: 15px 40px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  background: #0f172a;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  font-family: 'Poppins', sans-serif;
 }
 
 .navbar-container {
+  max-width: 1400px;
+  margin: auto;
+  height: 80px;
+  padding: 0 40px;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
+
+/* Logo */
 
 .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
   color: white;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: -1px;
 }
 
-.nav-links {
+.brand-icon {
+  font-size: 1.5rem;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.03);
+  transition: all 0.3s ease;
+}
+
+.brand-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+
+  background: linear-gradient(
+    90deg,
+    #3b82f6,
+    #60a5fa
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Menu */
+
+.nav-menu {
   display: flex;
-  gap: 20px;
   align-items: center;
+  gap: 30px;
 }
 
 .nav-link {
+  text-decoration: none;
+  color: #cbd5e1;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #3b82f6;
+}
+
+.nav-link.active {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+/* Right Section */
+
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* User */
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #3b82f6,
+    #2563eb
+  );
+
+  color: white;
+  font-weight: 700;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-name {
+  margin: 0;
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.user-role {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+
+/* Buttons */
+
+.login-btn,
+.register-btn,
+.logout-btn {
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+
+  padding: 10px 22px;
+  border-radius: 10px;
+
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.login-btn {
+  color: #3b82f6;
+  background: white;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+}
+
+.register-btn {
+  color: white;
+  background: #f97316;
+}
+
+.register-btn:hover {
+  background: #ea580c;
+  transform: translateY(-2px);
+}
+
+.logout-btn {
+  background: #ef4444;
   color: white;
 }
 
-.btn-primary {
-  background: #2563eb;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
+.logout-btn:hover {
+  background: #dc2626;
 }
 
-.btn-outline {
-  border: 1px solid white;
+/* Hamburger */
+
+.hamburger {
+  display: none;
+  border: none;
+  background: none;
   color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+
+    width: 100%;
+
+    background: #0f172a;
+
+    flex-direction: column;
+    gap: 20px;
+
+    padding: 25px;
+  }
+
+  .nav-menu.open {
+    display: flex;
+  }
+
+  .navbar-container {
+    padding: 0 20px;
+  }
+
+  .user-role {
+    display: none;
+  }
+
+  .brand-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3b82f6;
+}
 }
