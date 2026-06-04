@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import "./Navbar.css";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
   const { user, logout, isRecruiter } = useAuth();
@@ -28,7 +29,6 @@ const Navbar = () => {
         </button>
 
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-          <Link to="/jobs" className={isActive('/jobs')}>Browse Jobs</Link>
 
           {user && isRecruiter() && (
             <>
@@ -40,8 +40,13 @@ const Navbar = () => {
 
           {user && !isRecruiter() && (
             <>
-              <Link to="/seeker/dashboard" className={isActive('/seeker/dashboard')}>Dashboard</Link>
-              <Link to="/my-applications" className={isActive('/my-applications')}>My Applications</Link>
+              <Link to="/">Browse Jobs</Link>
+
+<Link to="/dashboard">Dashboard</Link>
+
+<Link to="/applications">My Applications</Link>
+
+<Link to="/recruiter">Dashboard</Link>
             </>
           )}
 

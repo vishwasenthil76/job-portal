@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { authAPI } from '../api/api';
 import toast from 'react-hot-toast';
+import "./Login.css";
 
 const Login = () => {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -22,8 +23,11 @@ const Login = () => {
       const res = await authAPI.login(form);
       login(res.data);
       toast.success(`Welcome back, ${res.data.name}!`);
-      const redirect = res.data.role === 'RECRUITER' ? '/recruiter/dashboard' : from;
-      navigate(redirect, { replace: true });
+     if (res.data.role === 'RECRUITER') {
+  navigate('/recruiter/dashboard', { replace: true });
+} else {
+  navigate('/jobs', { replace: true });
+}
     } catch (err) {
       toast.error(err.response?.data?.error || 'Login failed. Check your credentials.');
     } finally {
@@ -32,16 +36,44 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-page">
+  <div className="login-page">
+    <div className="login-container">
+
+      {/* Left Side */}
+      <div className="login-left">
+        <h1>Find Your Dream Job</h1>
+        <p>
+          Connect with top companies, discover exciting opportunities,
+          and take the next step in your career journey.
+        </p>
+
+        <div className="features">
+          <div className="feature">
+            🚀 Thousands of Jobs
+          </div>
+
+          <div className="feature">
+            🏢 Top Companies
+          </div>
+
+          <div className="feature">
+            💼 Easy Applications
+          </div>
+        </div>
+      </div>
+
+      {/* Right Side */}
       <div className="auth-card">
+
         <div className="auth-header">
-          <h1>Welcome back</h1>
+          <h2>Welcome Back 👋</h2>
           <p>Sign in to your account</p>
         </div>
 
         <form onSubmit={handleSubmit} className="auth-form">
+
           <div className="form-group">
-            <label>Email address</label>
+            <label>Email Address</label>
             <input
               type="email"
               name="email"
@@ -59,23 +91,37 @@ const Login = () => {
               name="password"
               value={form.password}
               onChange={handleChange}
-              placeholder="••••••••"
+              placeholder="Enter password"
               required
             />
           </div>
 
-          <button type="submit" className="btn-primary full-width" disabled={loading}>
-            {loading ? 'Signing in...' : 'Sign In'}
+          <button
+            type="submit"
+            className="login-btn"
+            disabled={loading}
+          >
+            {loading ? "Signing In..." : "Sign In"}
           </button>
+
         </form>
 
+        <div className="divider">
+          <span>OR</span>
+        </div>
+
+        <button className="google-btn">
+          Continue with Google
+        </button>
+
         <p className="auth-footer">
-          Don't have an account?{' '}
+          Don't have an account?
           <Link to="/register">Create one</Link>
         </p>
+
       </div>
     </div>
+  </div>
   );
 };
-
 export default Login;

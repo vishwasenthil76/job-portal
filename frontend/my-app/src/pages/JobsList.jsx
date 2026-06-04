@@ -2,6 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { jobsAPI } from '../api/api';
 import toast from 'react-hot-toast';
+import "./JobsList.css";
+import "./JobCard.css";
+
 
 const JobsList = () => {
   const [jobs, setJobs] = useState([]);
@@ -53,7 +56,14 @@ const JobsList = () => {
       {/* Search bar */}
       <div className="search-section">
         <div className="search-container">
-          <h1>Find Your Dream Job</h1>
+          <h1>Find Your Dream Job Today</h1>
+
+
+
+<p>
+  Discover thousands of opportunities from top companies
+  across India and Remote locations.
+</p>
           <p>{totalElements} jobs available</p>
           <form onSubmit={handleSearch} className="search-form">
             <input

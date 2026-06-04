@@ -1,5 +1,6 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
+import Navbar from "./component/Navbar.jsx";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import JobsList from "./pages/JobsList";
@@ -10,17 +11,24 @@ import MyApplications from "./pages/MyApplications.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
+      <Navbar />
+
       <Routes>
         <Route path="/" element={<JobsList />} />
+        <Route path="/jobs" element={<JobsList />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
         <Route path="/jobs/:id" element={<JobDetail />} />
+
         <Route path="/dashboard" element={<SeekerDashboard />} />
         <Route path="/applications" element={<MyApplications />} />
+
         <Route path="/recruiter" element={<RecruiterDashboard />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 

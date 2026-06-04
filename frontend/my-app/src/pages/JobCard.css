@@ -1,0 +1,30 @@
+.job-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+}
+
+.job-title {
+  font-size: 1.3rem;
+  color: #2563eb;
+}
+
+.company {
+  color: #666;
+  margin: 10px 0;
+}
+
+.apply-btn {
+  background: #10b981;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+}

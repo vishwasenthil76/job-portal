@@ -1,0 +1,148 @@
+.jobs-page {
+  min-height: 100vh;
+  background: #f4f7fb;
+}
+
+/* Hero Section */
+.search-section {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  padding: 70px 20px;
+}
+
+.search-container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.search-container h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.search-container p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* Search Form */
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 500px;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+}
+
+/* Filters */
+
+.filter-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-row select {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+}
+
+.btn-primary {
+  background: #f97316;
+  color: white;
+  border: none;
+  padding: 14px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #ea580c;
+}
+
+.btn-outline {
+  background: white;
+  color: #2563eb;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Jobs Grid */
+
+.jobs-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 50px 20px;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(350px,1fr));
+  gap: 25px;
+}
+
+/* Empty State */
+
+.empty-state {
+  text-align: center;
+  padding: 60px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Loading */
+
+.loading-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(350px,1fr));
+  gap: 20px;
+}
+
+.skeleton-card {
+  height: 220px;
+  background: #e5e7eb;
+  border-radius: 15px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+/* Pagination */
+
+.pagination {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.page-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.page-btn.active {
+  background: #2563eb;
+  color: white;
+}
