@@ -7,7 +7,12 @@ import JobsList from "./pages/JobsList";
 import JobDetail from "./pages/JobDetail";
 import SeekerDashboard from "./pages/SeekerDashboard";
 import RecruiterDashboard from "./pages/RecruiterDashboard";
+import PostJob from "./pages/PostJob";
+import ManageJobs from "./pages/ManageJobs";
+import EditJob from "./pages/EditJob";
+import Applicants from "./pages/Applicants";
 import MyApplications from "./pages/MyApplications.jsx";
+
 
 function App() {
   return (
@@ -26,7 +31,11 @@ function App() {
         <Route path="/dashboard" element={<SeekerDashboard />} />
         <Route path="/applications" element={<MyApplications />} />
 
-        <Route path="/recruiter" element={<RecruiterDashboard />} />
+        <Route path="/recruiter/dashboard" element={<RecruiterDashboard />} />
+        <Route path="/recruiter/post-job" element={<PostJob />} />
+        <Route path="/recruiter/manage-jobs" element={<ManageJobs />} />
+        <Route path="/recruiter/edit-job/:id" element={<EditJob />} />
+        <Route path="/recruiter/applicants/:jobId" element={<Applicants />} />
       </Routes>
     </>
   );

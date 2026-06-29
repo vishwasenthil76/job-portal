@@ -1,0 +1,70 @@
+.applicants-page{
+
+max-width:1200px;
+margin:auto;
+padding:40px;
+}
+
+.applicants-page h1{
+
+margin-bottom:30px;
+font-size:34px;
+}
+
+.applicants-table{
+
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.applicants-table th{
+
+background:#2563eb;
+color:white;
+padding:18px;
+text-align:left;
+}
+
+.applicants-table td{
+
+padding:18px;
+border-bottom:1px solid #eee;
+}
+
+.applicants-table tr:hover{
+
+background:#f8fafc;
+}
+
+.resume-btn{
+
+background:#2563eb;
+color:white;
+padding:8px 16px;
+border-radius:8px;
+text-decoration:none;
+}
+
+.resume-btn:hover{
+
+background:#1d4ed8;
+}
+
+select{
+
+padding:8px;
+border-radius:8px;
+}
+
+.empty{
+
+text-align:center;
+padding:80px;
+font-size:22px;
+color:gray;
+}
