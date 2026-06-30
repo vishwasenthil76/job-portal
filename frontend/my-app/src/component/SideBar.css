@@ -1,0 +1,120 @@
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px 20px;
+    box-shadow: 5px 0 20px rgba(0,0,0,0.15);
+    z-index: 1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:40px;
+}
+
+.logo-icon{
+    font-size:32px;
+}
+
+.logo h2{
+    font-size:32px;
+    color:#4F8CFF;
+    font-weight:700;
+}
+
+.sidebar nav{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    color:#cbd5e1;
+    text-decoration:none;
+    padding:14px 18px;
+    border-radius:12px;
+    transition:.3s;
+    font-size:17px;
+    font-weight:500;
+}
+
+.menu-item svg{
+    font-size:22px;
+}
+
+.menu-item:hover{
+    background:#1e40af;
+    color:white;
+    transform:translateX(6px);
+}
+
+.menu-item.active{
+    background:linear-gradient(90deg,#2563eb,#4f46e5);
+    color:white;
+    box-shadow:0 10px 20px rgba(37,99,235,.35);
+}
+
+.support-card{
+    background:#1e293b;
+    border-radius:18px;
+    padding:22px;
+}
+
+.support-card h3{
+    margin-bottom:10px;
+    font-size:20px;
+}
+
+.support-card p{
+    color:#94a3b8;
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:18px;
+}
+
+.support-card button{
+    width:100%;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.support-card button:hover{
+    background:#1d4ed8;
+}
+
+@media(max-width:900px){
+
+.sidebar{
+    width:80px;
+}
+
+.logo h2,
+.menu-item span,
+.support-card{
+    display:none;
+}
+
+.menu-item{
+    justify-content:center;
+}
+
+}

@@ -2,8 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { jobsAPI } from '../api/api';
 import toast from 'react-hot-toast';
+import JobCard from "../component/JobCard";
 import "./JobsList.css";
-import "./JobCard.css";
+import "../component/JobCard.css";
 
 
 const JobsList = () => {
